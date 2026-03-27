@@ -1,0 +1,33 @@
+{
+  "name": "@burneikis/pi-web-search",
+  "version": "1.0.0",
+  "description": "A claude native web search plugin for Pi.",
+  "license": "MIT",
+  "author": "burneikis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/burneikis/pi-web-search.git"
+  },
+  "keywords": [
+    "pi-package"
+  ],
+  "files": [
+    "index.ts",
+    "fetch.ts",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./index.ts"
+  },
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  }
+}
