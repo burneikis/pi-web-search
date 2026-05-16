@@ -13,6 +13,7 @@ export default function (pi: ExtensionAPI) {
     promptGuidelines: [
       "Use web_search when you need up-to-date information not in your training data.",
       "Be specific and concise with search queries for best results.",
+      "This is not for viewing specific web pages, but for getting a summary of search results. Try curl instead if you want to fetch the content of a specific URL.",
     ],
     parameters: Type.Object({
       query: Type.String({
@@ -25,7 +26,7 @@ export default function (pi: ExtensionAPI) {
       const apiKey = await ctx.modelRegistry.getApiKeyForProvider("anthropic");
       if (!apiKey) {
         throw new Error(
-          "No Anthropic API key found. Ensure your Anthropic API key is configured in pi."
+          "No Anthropic API key found. Ensure your Anthropic API key is configured in pi.",
         );
       }
 
