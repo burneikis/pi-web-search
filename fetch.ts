@@ -1,10 +1,22 @@
 import Anthropic from "@anthropic-ai/sdk";
 
+function isOAuthToken(apiKey: string): boolean {
+  return apiKey.includes("sk-ant-oat");
+}
+
 export async function webSearch(
   query: string,
   apiKey: string
 ): Promise<string> {
-  const client = new Anthropic({ apiKey });
+  const client = isOAuthToken(apiKey)
+    ? new Anthropic({
+        apiKey: null as unknown as string,
+        authToken: apiKey,
+        defaultHeaders: {
+          "anthropic-beta": "claude-code-20250219,oauth-2025-04-20",
+        },
+      })
+    : new Anthropic({ apiKey });
 
   const response = await client.messages.create({
     model: "claude-haiku-4-5",
