@@ -7,7 +7,7 @@ export default function (pi: ExtensionAPI) {
     name: "web_search",
     label: "Web Search",
     description:
-      "Search the internet for current information. Uses Anthropic's native web search via claude-haiku-4-5. Returns a concise summary with source URLs. Use when you need up-to-date facts, documentation, news, or anything not in your training data.",
+      "Search the internet for current information. Uses Anthropic's native web search via claude-haiku-4-5. Returns a short answer and a ranked list of source URLs (fetch them with curl to read in full), plus more result URLs. Use when you need up-to-date facts, documentation, news, or anything not in your training data.",
     promptSnippet:
       "Search the internet for current information using Anthropic's web search",
     promptGuidelines: [

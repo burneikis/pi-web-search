@@ -12,7 +12,13 @@ pi install npm:@burneikis/pi-web-search
 
 ## What it does
 
-Registers a `web_search` tool the LLM can call to look up current information: documentation, news, packages, changelogs, anything not in its training data. The tool returns a concise summary with source URLs.
+Registers a `web_search` tool the LLM can call to look up current information: documentation, news, packages, changelogs, anything not in its training data. The tool returns:
+
+- a short direct answer (when the results give one)
+- a ranked list of source URLs, primary sources first, each with a one-line description
+- a "More results" list with the other URLs the search returned
+
+The output is built for an agent that fetches the best URLs with curl to read them in full.
 
 ## Tool: `web_search`
 
