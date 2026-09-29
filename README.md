@@ -2,7 +2,7 @@
 
 My native claude web search tool for pi.
 
-Uses claude's web search rather than an external provider. Uses claude haiku to run the search.
+Uses claude's web search rather than an external provider. Uses claude haiku to run the search, or claude sonnet 5.5 in deep mode.
 
 ## Install
 
@@ -25,6 +25,7 @@ The output is built for an agent that fetches the best URLs with curl to read th
 | Parameter | Type | Description |
 |---|---|---|
 | `query` | `string` | The search query. Be specific and concise for best results. |
+| `deep` | `boolean` (optional) | Use `claude-sonnet-5-5` instead of `claude-haiku-4-5`. Better source ranking and synthesis for hard research questions, at about 2x cost per call. Default `false`. |
 
 ## Requirements
 

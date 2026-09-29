@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const MODEL = "claude-haiku-4-5";
-const MAX_TOKENS = 1024;
+const FAST = { model: "claude-haiku-4-5", maxTokens: 1024 };
+const DEEP = { model: "claude-sonnet-5-5", maxTokens: 2048 };
 const MAX_SEARCHES = 5;
 
 const CLAUDE_CODE_IDENTITY =
@@ -83,10 +83,12 @@ function formatMoreResults(
 export async function webSearch(
   query: string,
   apiKey: string,
+  deep = false,
 ): Promise<string> {
+  const { model, maxTokens } = deep ? DEEP : FAST;
   const response = await createClient(apiKey).messages.create({
-    model: MODEL,
-    max_tokens: MAX_TOKENS,
+    model,
+    max_tokens: maxTokens,
     system: [
       { type: "text", text: CLAUDE_CODE_IDENTITY },
       { type: "text", text: SYSTEM_PROMPT },
